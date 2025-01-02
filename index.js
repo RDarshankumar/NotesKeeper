@@ -28,17 +28,16 @@ app.post("/create", (req, res) => {
   );
 });
 
-app.get('/edit/:filename',(req,res)=>{
-  res.render('edit',{filename: req.params.filename})
+app.get("/edit/:filename", (req, res) => {
+  res.render("edit", { filename: req.params.filename });
+});
+app.post("/edit", (req, res) => {
 
-})
-app.post('/edit',(req,res)=>{
- fs.rename(`./files/${req.body.previous}`,`./files${req.body.new}`,(err)=>{
-  res.redirect('/')
+  fs.rename(`./files/${req.body.previous}`,`./files/${req.body.new}`,(err)=>{
 
- })
- 
-
-})
+    res.redirect('/')
+    
+  })
+});
 
 app.listen(3000);
