@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TASK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-black text-white flex items-center justify-center min-h-screen"
+  >
+    <div class="container mx-auto flex flex-col gap-6">
+      <div class="form bg-gray-800 text-white shadow-lg rounded-lg p-6" >
+        <form action="/create" method="post">
+        <input
+          type="text"
+          placeholder="Title"
+          class="w-full mb-4 p-2 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none"
+          name="title"
+        />
+        <textarea
+          placeholder="Description"
+          class="w-full mb-4 p-2 rounded border border-gray-600 bg-gray-700 text-white resize-none focus:outline-none h-24"
+          name="details"
+        ></textarea>
+        <input
+          type="submit"
+          value="Submit"
+          class="w-full bg-green-500 text-white p-2 rounded cursor-pointer hover:bg-green-600"
+        />
+      </form>
+      </div>
+      <div
+        class="tasks bg-gray-900 p-6 rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-4"
+      >
+        <% if(files.length > 0){%> <% if(files.forEach((val)=>{ %>
+          <div class="card bg-gray-800 text-white rounded p-4 shadow">
+            <h3 class="text-lg font-bold mb-2"><%= val %></h3>
+            <a class="text-blue-300 mr-4" href="/file/<%= val %>">Read more</a>
+            <a class="text-yellow-300" href="/edit/<%= val %>">Edit</a>
+          </div>
+          
+        <% })) %> <% }else{%>
+        <h3>No Task Yet.</h3>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
